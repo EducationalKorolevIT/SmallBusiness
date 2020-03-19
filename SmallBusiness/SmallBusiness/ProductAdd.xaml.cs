@@ -10,21 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SmallBusiness
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ProductAdd.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProductAdd : Window
     {
-        public MainWindow()
+        public ProductAdd()
         {
             InitializeComponent();
-            ProductAdd window = new ProductAdd();
-            window.Show();
+        }
+
+        private void AddProdItem(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
