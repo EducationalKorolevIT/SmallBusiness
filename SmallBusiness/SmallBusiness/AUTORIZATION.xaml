@@ -7,6 +7,45 @@
         mc:Ignorable="d"
         Title="Window2" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="46*"/>
+                <RowDefinition Height="47*"/>
+                <RowDefinition Height="46.4"/>
+            </Grid.RowDefinitions>
+            <Label Content="Логин" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Height="31" Width="120" RenderTransformOrigin="0.5,0.5" FontFamily="VesnaC" FontSize="16">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="1"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,8.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" FontFamily="VesnaC" FontSize="16"/>
+            <Button Content="Войти" HorizontalAlignment="Left" Margin="5,6.4,0,0" VerticalAlignment="Top" Width="125" Grid.Row="2" RenderTransformOrigin="-0.003,0.74" Height="35" FontFamily="Verbena-Normal" Cursor="Wait" FontSize="24"/>
+            <Button Content="Регистрация" Grid.Column="1" HorizontalAlignment="Left" Margin="12.2,6.4,0,0" Grid.Row="2" VerticalAlignment="Top" Width="115" Height="35" Click="Button_Click" FontFamily="Verbena-Normal" FontSize="24"/>
+            <PasswordBox Grid.Column="1" HorizontalAlignment="Left" Margin="7.2,10,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.146,0.545" Height="30"/>
+            <PasswordBox Grid.Column="1" HorizontalAlignment="Left" Margin="8.2,8.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.444,0.58" Height="28"/>
+        </Grid>
+        <Label Content="SMALLBUSINESS" Grid.Column="1" HorizontalAlignment="Left" Margin="20.2,40,0,0" VerticalAlignment="Top" Height="65" Width="230" FontFamily="Txt" FontSize="24"/>
+        <Menu Grid.Column="1" HorizontalAlignment="Left" Height="120" Margin="5.2,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="250">
+            <Label Content="1. Учёт и просмотр товара на складе&#xD;&#xA;2. Упрощение работы сотрудников &#xD;&#xA;3. Журнал задач руководителя&#xD;&#xA;4. Предложения по товару" Height="95" Width="235" FontFamily="VesnaC" FontSize="14"/>
+        </Menu>
     </Grid>
 </Window>

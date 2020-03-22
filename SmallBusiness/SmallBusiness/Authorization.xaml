@@ -8,15 +8,15 @@
         Title="Authorization" Height="450" Width="800">
 
     <Grid Margin="0,-3,0.6,3">
-        <ListBox HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Width="345" RenderTransformOrigin="0.202,0.348" SelectionChanged="ListBox_SelectionChanged">
-            <Label Content="Имя/логин" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="335" Background="Blue"/>
-            <Label Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.255,-0.016" Width="335" Background="Blue"/>
-            <Button Content="           Войти                 " HorizontalAlignment="Left" VerticalAlignment="Top" Width="260" Height="30" RenderTransformOrigin="0.503,3"/>
-            <Button Content="Регистрация" HorizontalAlignment="Left" VerticalAlignment="Top" Width="260" Height="30" RenderTransformOrigin="0.58,0.69"/>
+        <ListBox HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Width="360" RenderTransformOrigin="0.202,0.348" SelectionChanged="ListBox_SelectionChanged">
+            <Label Content="LOGO" RenderTransformOrigin="2.971,0.656"/>
+            <Menu Height="75" Width="345">
+                <Label Content="1.&#x9;Учёт и просмотр товара на складе&#xD;&#xA;2.&#x9;Упрощение работы сотрудников&#xD;&#xA;4.&#x9;Журнал задач руководителя.&#xD;&#xA;5.&#x9;Предложения по товару.&#xD;&#xA;" Height="100" Width="329" RenderTransformOrigin="0.506,0.764"/>
+            </Menu>
         </ListBox>
-        <Grid HorizontalAlignment="Left" Height="415" Margin="345,5,-2,0" VerticalAlignment="Top" Width="450">
-            <PasswordBox RenderTransformOrigin="0.758,0.682" Margin="6,0,5,395"/>
-            <PasswordBox RenderTransformOrigin="0.752,0.503" Margin="6,25,5,370">
+        <Grid HorizontalAlignment="Left" Height="415" Margin="370,5,-2,0" VerticalAlignment="Top" Width="425">
+            <PasswordBox RenderTransformOrigin="0.758,0.682" Margin="170,5,10,380"/>
+            <PasswordBox RenderTransformOrigin="0.752,0.503" Margin="171,50,10,330">
                 <PasswordBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -26,6 +26,11 @@
                     </TransformGroup>
                 </PasswordBox.RenderTransform>
             </PasswordBox>
+            <Label Content="Имя/логин" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Background="Blue" RenderTransformOrigin="0.805,1.766" Margin="30,5,0,0" Height="35"/>
+            <Label Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.255,-0.016" Width="130" Background="Blue" Margin="30,50,0,0" Height="35"/>
+            <Button Content="           Войти                 " HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Height="40" RenderTransformOrigin="0.503,3" Margin="55,130,0,0"/>
+            <Button Content="Регистрация" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Height="40" RenderTransformOrigin="0.58,0.69" Margin="210,130,0,0"/>
+            <ListBox HorizontalAlignment="Left" Height="175" Margin="5,200,0,0" VerticalAlignment="Top" Width="400"/>
         </Grid>
 
 
