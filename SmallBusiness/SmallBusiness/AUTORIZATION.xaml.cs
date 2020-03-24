@@ -26,7 +26,29 @@ namespace SmallBusiness
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            int userId = -1;
+            String userName = LoginField.Text;
+            String userPass = PasswordField.Password;
+            foreach(TableUsers user in MainWindow.Database.TableUsers)
+            {
+                if (user.login == userName && user.password == userPass)
+                {
+                    userId = user.id;
+                }
+            }
 
+            if (userId != -1)
+            {
+                // ProductAdd window = new ProductAdd();
+                ProductAdd window = new ProductAdd();
+                window.Show();
+                MainWindow.Main.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Неправильное имя или пароль");
+            }
         }
     }
 }

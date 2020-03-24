@@ -1,0 +1,36 @@
+﻿<Window x:Class="SmallBusiness.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmallBusiness"
+        mc:Ignorable="d"
+        Title="Window3" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.ColumnSpan="6">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Имя" Width="*"/>
+                <DataGridTextColumn Header="цена" Width="*"/>
+                <DataGridTextColumn Header="производитель" Width="*"/>
+                <DataGridTextColumn Header="описание" Width="*"/>
+                <DataGridTextColumn Header="артикул" Width="*"/>
+                <DataGridTextColumn Header="количество" Width="*"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Content="добавить" Grid.Column="6" Margin="0.667,0,0.133,356" />
+        <Button Content="удалить" Grid.Column="5" Margin="113.267,69,1.133,287" Grid.ColumnSpan="2" />
+        <Button Content="редактировать" Grid.Column="5" Margin="113.267,138,1.133,218" Grid.ColumnSpan="2" />
+        <Button Content="назад" Grid.Column="5" Margin="113.267,207,1.133,149" Grid.ColumnSpan="2" />
+
+    </Grid>
+</Window>

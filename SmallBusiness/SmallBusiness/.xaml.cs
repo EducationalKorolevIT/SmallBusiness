@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SmallBusiness
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Window3.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Window3 : Window
     {
-        public static SmallBusinessEntities2 Database = new SmallBusinessEntities2();
-        public static MainWindow Main;
-        public MainWindow()
+        public Window3()
         {
             InitializeComponent();
-            Main = this;
-            Hide();
-            Window2 win = new Window2();
-            win.Show();
         }
     }
 }
