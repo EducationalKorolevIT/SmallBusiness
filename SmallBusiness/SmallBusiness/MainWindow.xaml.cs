@@ -20,12 +20,15 @@ namespace SmallBusiness
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static SmallBusinessEntities2 Database = new SmallBusinessEntities2();
+        public static MainWindow Main;
         public MainWindow()
         {
             InitializeComponent();
-           // ProductAdd window = new ProductAdd();
-            Authorization window = new Authorization();
-            window.Show();
+            Main = this;
+            Hide();
+            Window2 win = new Window2();
+            win.Show();
         }
     }
 }

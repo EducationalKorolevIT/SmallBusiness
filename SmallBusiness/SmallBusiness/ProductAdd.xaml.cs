@@ -26,7 +26,34 @@ namespace SmallBusiness
 
         private void AddProdItem(object sender, RoutedEventArgs e)
         {
+            String pName = NameField.Text;
+            String pArticle = ArticleField.Text;
+            String pManufacturer = ManufacturerField.Text;
+            String pDesc = DescriptionField.Text;
+            int pPrice = Convert.ToInt32(PriceField.Text);
+            TableProduct pItem = new TableProduct()
+            {
+                Article = pArticle,
+                Name = pName,
+                Manufacturer = pManufacturer,
+                Description = pDesc
+            };
 
+            TableProduct fItem = MainWindow.Database.TableProduct.FirstOrDefault(f => f.Name == pName && f.Description == pDesc && f.Article == pArticle && f.Manufacturer == pManufacturer);
+
+            if (fItem == null)
+            {
+                MainWindow.Database.TableProduct.Add(pItem);
+                fItem = pItem;
+
+                TablePrice pPriceObj = new TablePrice()
+                {
+                    TableProduct = fItem,
+                    Price = pPrice
+                };
+                MainWindow.Database.TablePrice.Add(pPriceObj);
+            }
+            MainWindow.Database.SaveChanges();
         }
     }
 }
