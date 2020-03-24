@@ -58,6 +58,9 @@
     <Compile Include="AUTORIZATION.xaml.cs">
       <DependentUpon>AUTORIZATION.xaml</DependentUpon>
     </Compile>
+    <Compile Include=".xaml.cs">
+      <DependentUpon>view.xaml</DependentUpon>
+    </Compile>
     <Page Include="Authorization.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +92,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AUTORIZATION.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
