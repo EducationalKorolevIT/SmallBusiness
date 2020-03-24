@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="Window3" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="197*"/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="27*"/>
-            <RowDefinition Height="29*"/>
-            <RowDefinition Height="28*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Height="45" Width="110"/>
+        <DatePicker x:Name="Date" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="775" Margin="10,5,0,0"/>
+        <TextBox x:Name="Topic" HorizontalAlignment="Left" Height="85" Margin="10,9.6,0,0" TextWrapping="Wrap" Text="Тема" VerticalAlignment="Top" Width="775" TextChanged="TextBox_TextChanged_1" FontSize="22" Grid.Row="1"/>
+        <Button Content="                   Добавить
+                " HorizontalAlignment="Left" Margin="10,14.6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="775" Height="45" FontSize="24" Name ="Add"/>
+        <TextBox x:Name="Description" HorizontalAlignment="Left" Height="155" Margin="10,9.8,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" Width="775" TextChanged="TextBox_TextChanged_2" FontSize="22"/>
     </Grid>
 </Window>
