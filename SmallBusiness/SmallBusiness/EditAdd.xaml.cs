@@ -24,12 +24,7 @@ namespace SmallBusiness
             InitializeComponent();
         }
 
-        private void changes(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cancellation(object sender, RoutedEventArgs e)
+        private void SaveToDatabase(object sender, RoutedEventArgs e)
         {
 
         }
