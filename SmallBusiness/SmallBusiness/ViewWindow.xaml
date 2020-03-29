@@ -1,4 +1,4 @@
-﻿<Window x:Class="SmallBusiness.Window3"
+﻿<Window x:Class="SmallBusiness.ViewWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -27,10 +27,10 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Content="добавить" Grid.Column="6" Margin="0.667,0,0.133,356" />
-        <Button Content="удалить" Grid.Column="5" Margin="113.267,69,1.133,287" Grid.ColumnSpan="2" />
-        <Button Content="редактировать" Grid.Column="5" Margin="113.267,138,1.133,218" Grid.ColumnSpan="2" />
-        <Button Content="назад" Grid.Column="5" Margin="113.267,207,1.133,149" Grid.ColumnSpan="2" />
+        <Button Content="добавить" Grid.Column="6" Margin="0.667,0,0.133,356" Click="AddProd"/>
+        <Button Content="удалить" Grid.Column="5" Margin="113.267,69,1.133,287" Grid.ColumnSpan="2" Click="DeleteProd"/>
+        <Button Content="редактировать" Grid.Column="5" Margin="113.267,138,1.133,218" Grid.ColumnSpan="2" Click="EditProd"/>
+        <Button Content="назад" Grid.Column="5" Margin="113.267,207,1.133,149" Grid.ColumnSpan="2" Click="BackBtnClick"/>
 
     </Grid>
 </Window>
