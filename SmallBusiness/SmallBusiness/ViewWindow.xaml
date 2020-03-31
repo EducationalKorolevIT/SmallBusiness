@@ -16,14 +16,14 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.ColumnSpan="6">
+        <DataGrid Grid.ColumnSpan="6" x:Name="DatabaseGrid" AutoGenerateColumns="False">
             <DataGrid.Columns >
-                <DataGridTextColumn Header="Имя" Width="*"/>
-                <DataGridTextColumn Header="цена" Width="*"/>
-                <DataGridTextColumn Header="производитель" Width="*"/>
-                <DataGridTextColumn Header="описание" Width="*"/>
-                <DataGridTextColumn Header="артикул" Width="*"/>
-                <DataGridTextColumn Header="количество" Width="*"/>
+                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="цена" Width="*" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="производитель" Width="*" Binding="{Binding Manufacturer}"/>
+                <DataGridTextColumn Header="описание" Width="*" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="артикул" Width="*" Binding="{Binding Article}"/>
+                <!--<DataGridTextColumn Header="количество" Width="*"/>-->
             </DataGrid.Columns>
 
         </DataGrid>

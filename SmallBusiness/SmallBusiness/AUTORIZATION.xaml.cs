@@ -40,7 +40,7 @@ namespace SmallBusiness
             if (userId != -1)
             {
                 // ProductAdd window = new ProductAdd();
-                ProductAdd window = new ProductAdd();
+                ViewWindow window = new ViewWindow();
                 window.Show();
                 MainWindow.Main.Show();
                 Close();

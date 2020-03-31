@@ -15,10 +15,10 @@ namespace SmallBusiness
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class SmallBusinessEntities2 : DbContext
+    public partial class SmallBusinessEntities : DbContext
     {
-        public SmallBusinessEntities2()
-            : base("name=SmallBusinessEntities2")
+        public SmallBusinessEntities()
+            : base("name=SmallBusinessEntities")
         {
         }
     
@@ -32,7 +32,7 @@ namespace SmallBusiness
         public virtual DbSet<TableProduct> TableProduct { get; set; }
         public virtual DbSet<TableUsers> TableUsers { get; set; }
         public virtual DbSet<TableWarehouse> TableWarehouse { get; set; }
-        public virtual DbSet<ViewProducts> ViewProducts { get; set; }
+        public virtual DbSet<ProductView> ProductView { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

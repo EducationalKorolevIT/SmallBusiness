@@ -19,14 +19,37 @@ namespace SmallBusiness
     /// </summary>
     public partial class Window1 : Window
     {
-        public Window1()
+        int id;
+        public Window1(int id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
         private void SaveToDatabase(object sender, RoutedEventArgs e)
         {
+            String name = NameField.Text;
+            String article = ArticleField.Text;
+            String descr = DescField.Text;
+            String manufacturer = ManufacturerField.Text;
+            int price = Convert.ToInt32(PriceField.Text);
 
+            TableProduct prod = MainWindow.Database.TableProduct.FirstOrDefault(f => f.id == id);
+
+            prod.Name = name;
+            prod.Article = article;
+            prod.Description = descr;
+            prod.Manufacturer = manufacturer;
+
+            int idPrice = -1;
+            foreach(TablePrice prc in MainWindow.Database.TablePrice)
+            {
+                if (prc.id_product == id) idPrice = prc.id;
+            }
+
+            MainWindow.Database.TablePrice.FirstOrDefault(f=>f.id==idPrice).Price = price;
+
+            MainWindow.Database.SaveChanges();
         }
     }
 }
