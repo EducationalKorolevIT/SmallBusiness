@@ -43,7 +43,7 @@ namespace SmallBusiness
 
         private void EditProd(object sender, RoutedEventArgs e)
         {
-            int id = DatabaseGrid.SelectedIndex;
+            int id = DatabaseGrid.SelectedIndex+1;
             //MessageBox.Show("Selected ID: " + id);
             editWin = new Window1(id);
             editWin.Show();
