@@ -41,13 +41,7 @@ namespace SmallBusiness
             prod.Description = descr;
             prod.Manufacturer = manufacturer;
 
-            int idPrice = -1;
-            foreach(TablePrice prc in MainWindow.Database.TablePrice)
-            {
-                if (prc.id_product == id) idPrice = prc.id;
-            }
-
-            MainWindow.Database.TablePrice.FirstOrDefault(f=>f.id==idPrice).Price = price;
+            MainWindow.Database.TablePrice.FirstOrDefault(f=>f.id_product==prod.id).Price = price;
 
             MainWindow.Database.SaveChanges();
         }

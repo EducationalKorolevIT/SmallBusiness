@@ -27,10 +27,13 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Content="добавить" Grid.Column="6" Margin="0.667,0,0.133,356" Click="AddProd"/>
-        <Button Content="удалить" Grid.Column="5" Margin="113.267,69,1.133,287" Grid.ColumnSpan="2" Click="DeleteProd"/>
-        <Button Content="редактировать" Grid.Column="5" Margin="113.267,138,1.133,218" Grid.ColumnSpan="2" Click="EditProd"/>
-        <Button Content="назад" Grid.Column="5" Margin="113.267,207,1.133,149" Grid.ColumnSpan="2" Click="BackBtnClick"/>
+        <StackPanel Grid.Column="6" Orientation="Vertical">
+            <Button Content="добавить" Click="AddProd" Height="60"/>
+            <Button Content="удалить" Click="DeleteProd" Height="60"/>
+            <Button Content="редактировать" Click="EditProd" Height="60"/>
+            <Button Content="назад" Click="BackBtnClick" Height="60"/>
+            <Button Content="обновить" Click="UpdateBtnClick" Height="60"/>
+        </StackPanel>
 
     </Grid>
 </Window>

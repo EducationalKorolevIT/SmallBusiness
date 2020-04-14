@@ -38,13 +38,17 @@ namespace SmallBusiness
 
         private void DeleteProd(object sender, RoutedEventArgs e)
         {
-
+            ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
+            int id = p.id;
+            MainWindow.Database.TablePrice.Remove(MainWindow.Database.TablePrice.FirstOrDefault(f => f.id_product == id));
+            MainWindow.Database.TableProduct.Remove(MainWindow.Database.TableProduct.FirstOrDefault(f => f.id == id));
+            MainWindow.Database.SaveChanges();
         }
 
         private void EditProd(object sender, RoutedEventArgs e)
         {
-            int id = DatabaseGrid.SelectedIndex+1;
-            //MessageBox.Show("Selected ID: " + id);
+            ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
+            int id = p.id;
             editWin = new Window1(id);
             editWin.Show();
         }
@@ -52,6 +56,13 @@ namespace SmallBusiness
         private void BackBtnClick(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void UpdateBtnClick(object sender, RoutedEventArgs e)
+        {
+            DatabaseGrid.ItemsSource = null;
+            DatabaseGrid.Items.Clear();
+            DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.Local.ToBindingList();
         }
     }
 }
