@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace SmallBusiness
 {
     /// <summary>
-    /// Логика взаимодействия для Authorization.xaml
+    /// Логика взаимодействия для Window4.xaml
     /// </summary>
-    public partial class Authorization : Window
+    public partial class Window4 : Window
     {
-        public Authorization()
+        public Window4()
         {
             InitializeComponent();
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
