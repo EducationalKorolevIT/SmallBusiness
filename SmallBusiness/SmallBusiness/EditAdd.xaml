@@ -21,7 +21,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Content="Сохранить изменения" Grid.Column="3" Grid.Row="4" Click="SaveToDatabase"/>
-        <Button Content="отмена" Grid.Column="3" Grid.Row="3" Click="Cancellatiom"/>
         <TextBox x:Name="ArticleField" Text="" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
         <TextBox x:Name="DescField" Text="" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2"/>
         <TextBox x:Name="ManufacturerField" Text="" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" />
