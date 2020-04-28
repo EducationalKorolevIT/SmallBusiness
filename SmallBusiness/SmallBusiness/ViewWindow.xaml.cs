@@ -20,11 +20,13 @@ namespace SmallBusiness
     /// </summary>
     public partial class ViewWindow : Window
     {
+        public static ViewWindow self;
         public ViewWindow()
         {
             InitializeComponent();
             MainWindow.Database.producttable.Load();
             DatabaseGrid.ItemsSource = MainWindow.Database.producttable.ToList();
+            self = this;
         }
 
         ProductAdd prAddWin;
@@ -38,11 +40,10 @@ namespace SmallBusiness
 
         private void DeleteProd(object sender, RoutedEventArgs e)
         {
-            //ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
-            //int id = p.id;
-            //MainWindow.Database.TablePrice.Remove(MainWindow.Database.TablePrice.FirstOrDefault(f => f.id_product == id));
-            //MainWindow.Database.TableProduct.Remove(MainWindow.Database.TableProduct.FirstOrDefault(f => f.id == id));
-            //MainWindow.Database.SaveChanges();
+            producttable p = (producttable)(DatabaseGrid.SelectedItem);
+            MainWindow.Database.producttable.Remove(p);
+            MainWindow.Database.SaveChanges();
+            ViewWindow.self.UpdateBtnClick(null, null);
         }
 
         private void EditProd(object sender, RoutedEventArgs e)
@@ -58,7 +59,7 @@ namespace SmallBusiness
 
         }
 
-        private void UpdateBtnClick(object sender, RoutedEventArgs e)
+        public void UpdateBtnClick(object sender, RoutedEventArgs e)
         {
             DatabaseGrid.ItemsSource = MainWindow.Database.producttable.ToList();
         }

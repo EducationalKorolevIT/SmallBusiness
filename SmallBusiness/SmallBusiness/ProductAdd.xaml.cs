@@ -48,6 +48,9 @@ namespace SmallBusiness
                 fItem = pItem;
             }
             MainWindow.Database.SaveChanges();
+
+            ViewWindow.self.UpdateBtnClick(null, null);
+            Close();
         }
     }
 }

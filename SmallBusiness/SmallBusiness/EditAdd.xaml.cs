@@ -37,7 +37,7 @@ namespace SmallBusiness
             String article = ArticleField.Text;
             String descr = DescField.Text;
             String manufacturer = ManufacturerField.Text;
-            int price = Convert.ToInt32(PriceField.Text);
+            float price = Convert.ToSingle(PriceField.Text);
 
             producttable prod = MainWindow.Database.producttable.FirstOrDefault(f => f.id == id);
 
@@ -47,9 +47,10 @@ namespace SmallBusiness
             prod.Manufacturer = manufacturer;
             prod.Price = price;
 
-            //MainWindow.Database.TablePrice.FirstOrDefault(f=>f.id_product==prod.id).Price = price;
-
             MainWindow.Database.SaveChanges();
+
+            ViewWindow.self.UpdateBtnClick(null, null);
+            Close();
         }
     }
 }
