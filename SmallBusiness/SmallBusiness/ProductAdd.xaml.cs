@@ -31,7 +31,7 @@ namespace SmallBusiness
             String pManufacturer = ManufacturerField.Text;
             String pDesc = DescriptionField.Text;
             int pPrice = Convert.ToInt32(PriceField.Text);
-            TableProduct pItem = new TableProduct()
+            producttable pItem = new producttable()
             {
                 Article = pArticle,
                 Name = pName,
@@ -39,19 +39,12 @@ namespace SmallBusiness
                 Description = pDesc
             };
 
-            TableProduct fItem = MainWindow.Database.TableProduct.FirstOrDefault(f => f.Name == pName && f.Description == pDesc && f.Article == pArticle && f.Manufacturer == pManufacturer);
+            producttable fItem = MainWindow.Database.producttable.FirstOrDefault(f => f.Name == pName && f.Description == pDesc && f.Article == pArticle && f.Manufacturer == pManufacturer);
 
             if (fItem == null)
             {
-                MainWindow.Database.TableProduct.Add(pItem);
+                MainWindow.Database.producttable.Add(pItem);
                 fItem = pItem;
-
-                TablePrice pPriceObj = new TablePrice()
-                {
-                    TableProduct = fItem,
-                    Price = pPrice
-                };
-                MainWindow.Database.TablePrice.Add(pPriceObj);
             }
             MainWindow.Database.SaveChanges();
         }

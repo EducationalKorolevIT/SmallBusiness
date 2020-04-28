@@ -23,8 +23,8 @@ namespace SmallBusiness
         public ViewWindow()
         {
             InitializeComponent();
-            MainWindow.Database.ProductView.Load();
-            DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.Local.ToBindingList();
+            //MainWindow.Database.ProductView.Load();
+            //DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.Local.ToBindingList();
         }
 
         ProductAdd prAddWin;
@@ -38,19 +38,19 @@ namespace SmallBusiness
 
         private void DeleteProd(object sender, RoutedEventArgs e)
         {
-            ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
-            int id = p.id;
-            MainWindow.Database.TablePrice.Remove(MainWindow.Database.TablePrice.FirstOrDefault(f => f.id_product == id));
-            MainWindow.Database.TableProduct.Remove(MainWindow.Database.TableProduct.FirstOrDefault(f => f.id == id));
-            MainWindow.Database.SaveChanges();
+            //ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
+            //int id = p.id;
+            //MainWindow.Database.TablePrice.Remove(MainWindow.Database.TablePrice.FirstOrDefault(f => f.id_product == id));
+            //MainWindow.Database.TableProduct.Remove(MainWindow.Database.TableProduct.FirstOrDefault(f => f.id == id));
+            //MainWindow.Database.SaveChanges();
         }
 
         private void EditProd(object sender, RoutedEventArgs e)
         {
-            ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
-            int id = p.id;
-            editWin = new Window1(id);
-            editWin.Show();
+            //ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
+            //int id = p.id;
+            //editWin = new Window1(id);
+            //editWin.Show();
         }
 
         private void BackBtnClick(object sender, RoutedEventArgs e)
@@ -60,7 +60,7 @@ namespace SmallBusiness
 
         private void UpdateBtnClick(object sender, RoutedEventArgs e)
         {
-            DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.ToList();
+            //DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.ToList();
         }
     }
 }

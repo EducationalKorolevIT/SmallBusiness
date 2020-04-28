@@ -20,7 +20,7 @@ namespace SmallBusiness
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static SmallBusinessEntities Database = new SmallBusinessEntities();
+        public static smallbusinessEntities Database = new smallbusinessEntities();
         public static MainWindow Main;
         public MainWindow()
         {
