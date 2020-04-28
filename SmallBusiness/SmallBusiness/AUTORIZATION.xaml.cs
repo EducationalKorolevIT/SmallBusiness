@@ -29,7 +29,7 @@ namespace SmallBusiness
             int userId = -1;
             String userName = LoginField.Text;
             String userPass = PasswordField.Password;
-            foreach(TableUsers user in MainWindow.Database.TableUsers)
+            foreach(users user in MainWindow.Database.users)
             {
                 if (user.login == userName && user.password == userPass)
                 {

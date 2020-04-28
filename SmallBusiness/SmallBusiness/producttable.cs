@@ -12,14 +12,22 @@ namespace SmallBusiness
     using System;
     using System.Collections.Generic;
     
-    public partial class TableWarehouse
+    public partial class producttable
     {
-        public int id { get; set; }
-        public int id_product { get; set; }
-        public int Quantity { get; set; }
-        public double Packing { get; set; }
-        public string Type { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public producttable()
+        {
+            this.warehouse = new HashSet<warehouse>();
+        }
     
-        public virtual TableProduct TableProduct { get; set; }
+        public int id { get; set; }
+        public string Name { get; set; }
+        public string Article { get; set; }
+        public string Manufacturer { get; set; }
+        public string Description { get; set; }
+        public float Price { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<warehouse> warehouse { get; set; }
     }
 }

@@ -34,14 +34,14 @@ namespace SmallBusiness
             String manufacturer = ManufacturerField.Text;
             int price = Convert.ToInt32(PriceField.Text);
 
-            TableProduct prod = MainWindow.Database.TableProduct.FirstOrDefault(f => f.id == id);
+            producttable prod = MainWindow.Database.producttable.FirstOrDefault(f => f.id == id);
 
             prod.Name = name;
             prod.Article = article;
             prod.Description = descr;
             prod.Manufacturer = manufacturer;
 
-            MainWindow.Database.TablePrice.FirstOrDefault(f=>f.id_product==prod.id).Price = price;
+            //MainWindow.Database.TablePrice.FirstOrDefault(f=>f.id_product==prod.id).Price = price;
 
             MainWindow.Database.SaveChanges();
         }

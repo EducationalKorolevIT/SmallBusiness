@@ -12,12 +12,10 @@ namespace SmallBusiness
     using System;
     using System.Collections.Generic;
     
-    public partial class TablePrice
+    public partial class users
     {
         public int id { get; set; }
-        public int id_product { get; set; }
-        public double Price { get; set; }
-    
-        public virtual TableProduct TableProduct { get; set; }
+        public string login { get; set; }
+        public string password { get; set; }
     }
 }

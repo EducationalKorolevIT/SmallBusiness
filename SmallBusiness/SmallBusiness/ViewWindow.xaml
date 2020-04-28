@@ -8,15 +8,10 @@
         Title="Window3" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.ColumnSpan="6" x:Name="DatabaseGrid" AutoGenerateColumns="False">
+        <DataGrid x:Name="DatabaseGrid" AutoGenerateColumns="False">
             <DataGrid.Columns >
                 <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="цена" Width="*" Binding="{Binding Price}"/>
