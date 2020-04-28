@@ -60,9 +60,7 @@ namespace SmallBusiness
 
         private void UpdateBtnClick(object sender, RoutedEventArgs e)
         {
-            DatabaseGrid.ItemsSource = null;
-            DatabaseGrid.Items.Clear();
-            DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.Local.ToBindingList();
+            DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.ToList();
         }
     }
 }
