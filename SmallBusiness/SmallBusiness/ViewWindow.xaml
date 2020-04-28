@@ -31,7 +31,6 @@
             <Button Content="добавить" Click="AddProd" Height="60"/>
             <Button Content="удалить" Click="DeleteProd" Height="60"/>
             <Button Content="редактировать" Click="EditProd" Height="60"/>
-            <Button Content="назад" Click="BackBtnClick" Height="60"/>
             <Button Content="обновить" Click="UpdateBtnClick" Height="60"/>
         </StackPanel>
 

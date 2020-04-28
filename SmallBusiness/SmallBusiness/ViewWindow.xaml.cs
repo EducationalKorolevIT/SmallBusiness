@@ -53,11 +53,6 @@ namespace SmallBusiness
             editWin.Show();
         }
 
-        private void BackBtnClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void UpdateBtnClick(object sender, RoutedEventArgs e)
         {
             DatabaseGrid.ItemsSource = null;

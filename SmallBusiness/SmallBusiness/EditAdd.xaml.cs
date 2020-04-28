@@ -45,5 +45,10 @@ namespace SmallBusiness
 
             MainWindow.Database.SaveChanges();
         }
+
+        private void Cancellatiom(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
