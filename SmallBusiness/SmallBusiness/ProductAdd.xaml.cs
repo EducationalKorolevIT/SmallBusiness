@@ -36,7 +36,8 @@ namespace SmallBusiness
                 Article = pArticle,
                 Name = pName,
                 Manufacturer = pManufacturer,
-                Description = pDesc
+                Description = pDesc,
+                Price = pPrice
             };
 
             producttable fItem = MainWindow.Database.producttable.FirstOrDefault(f => f.Name == pName && f.Description == pDesc && f.Article == pArticle && f.Manufacturer == pManufacturer);

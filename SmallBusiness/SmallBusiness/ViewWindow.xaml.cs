@@ -23,8 +23,8 @@ namespace SmallBusiness
         public ViewWindow()
         {
             InitializeComponent();
-            //MainWindow.Database.ProductView.Load();
-            //DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.Local.ToBindingList();
+            MainWindow.Database.producttable.Load();
+            DatabaseGrid.ItemsSource = MainWindow.Database.producttable.ToList();
         }
 
         ProductAdd prAddWin;
@@ -47,15 +47,20 @@ namespace SmallBusiness
 
         private void EditProd(object sender, RoutedEventArgs e)
         {
-            //ProductView p = (ProductView)(DatabaseGrid.SelectedItem);
-            //int id = p.id;
-            //editWin = new Window1(id);
-            //editWin.Show();
+            producttable p = (producttable)(DatabaseGrid.SelectedItem);
+            int id = p.id;
+            editWin = new Window1(p);
+            editWin.Show();
+        }
+
+        private void BackBtnClick(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void UpdateBtnClick(object sender, RoutedEventArgs e)
         {
-            //DatabaseGrid.ItemsSource = MainWindow.Database.ProductView.ToList();
+            DatabaseGrid.ItemsSource = MainWindow.Database.producttable.ToList();
         }
     }
 }

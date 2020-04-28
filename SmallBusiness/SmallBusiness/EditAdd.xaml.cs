@@ -20,10 +20,15 @@ namespace SmallBusiness
     public partial class Window1 : Window
     {
         int id;
-        public Window1(int id)
+        public Window1(producttable ent)
         {
             InitializeComponent();
-            this.id = id;
+            this.id = ent.id;
+            NameField.Text = ent.Name;
+            ArticleField.Text = ent.Article;
+            DescField.Text = ent.Description;
+            ManufacturerField.Text = ent.Manufacturer;
+            PriceField.Text = Convert.ToString(ent.Price);
         }
 
         private void SaveToDatabase(object sender, RoutedEventArgs e)
@@ -40,15 +45,11 @@ namespace SmallBusiness
             prod.Article = article;
             prod.Description = descr;
             prod.Manufacturer = manufacturer;
+            prod.Price = price;
 
             //MainWindow.Database.TablePrice.FirstOrDefault(f=>f.id_product==prod.id).Price = price;
 
             MainWindow.Database.SaveChanges();
-        }
-
-        private void Cancellatiom(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
