@@ -122,6 +122,9 @@
     <Compile Include="warehouse.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="the_tasks_of_the_director..xaml.cs">
+      <DependentUpon>the_tasks_of_the_director..xaml</DependentUpon>
+    </Compile>
     <Page Include="EditAdd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="the_tasks_of_the_director..xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
