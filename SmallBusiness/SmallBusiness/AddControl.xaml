@@ -13,17 +13,17 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition MinHeight="30" MaxHeight="60"/>
             <RowDefinition Height="1"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition MinHeight="30" MaxHeight="60"/>
             <RowDefinition Height="1"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition MinHeight="30" MaxHeight="60"/>
             <RowDefinition Height="1"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition MinHeight="30" MaxHeight="60"/>
             <RowDefinition Height="1"/>
-            <RowDefinition MinHeight="180"/>
+            <RowDefinition MinHeight="120"/>
             <RowDefinition Height="1"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition MinHeight="30" MaxHeight="60"/>
         </Grid.RowDefinitions>
         <Button Content="Добавить" Grid.ColumnSpan="3"  Grid.Row="10" Click="AddProdItem" FontSize="30" Margin="3"/>
         <Label Content="Имя:" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="30" Grid.Row="0"/>

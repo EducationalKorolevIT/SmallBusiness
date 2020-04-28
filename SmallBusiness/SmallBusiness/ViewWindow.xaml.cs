@@ -24,18 +24,19 @@ namespace SmallBusiness
         public ViewWindow()
         {
             InitializeComponent();
-            MainWindow.Database.producttable.Load();
-            DatabaseGrid.ItemsSource = MainWindow.Database.producttable.ToList();
             self = this;
         }
 
-        ProductAdd prAddWin;
-        Window1 editWin;
-
         private void AddProd(object sender, RoutedEventArgs e)
         {
-            prAddWin = new ProductAdd();
-            prAddWin.Show();
+            AddControl add = new AddControl();
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = "Добавление"
+            };
+            Tabs.Items.Add(item);
+            Tabs.SelectedItem = item;
         }
 
         private void DeleteProd(object sender, RoutedEventArgs e)
@@ -49,9 +50,14 @@ namespace SmallBusiness
         private void EditProd(object sender, RoutedEventArgs e)
         {
             producttable p = (producttable)(DatabaseGrid.SelectedItem);
-            int id = p.id;
-            editWin = new Window1(p);
-            editWin.Show();
+            EditControl add = new EditControl(p);
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = "Редактирование"
+            };
+            Tabs.Items.Add(item);
+            Tabs.SelectedItem = item;
         }
 
         private void BackBtnClick(object sender, RoutedEventArgs e)
@@ -62,6 +68,16 @@ namespace SmallBusiness
         public void UpdateBtnClick(object sender, RoutedEventArgs e)
         {
             DatabaseGrid.ItemsSource = MainWindow.Database.producttable.ToList();
+        }
+
+        private void CloseTab(object sender, RoutedEventArgs e)
+        {
+            Tabs.Items.Remove(Tabs.SelectedItem);
+        }
+
+        private void ViewProds(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

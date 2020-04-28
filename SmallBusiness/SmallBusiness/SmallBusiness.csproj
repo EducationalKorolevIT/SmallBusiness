@@ -89,6 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddControl.xaml.cs">
+      <DependentUpon>AddControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AUTORIZATION.xaml.cs">
       <DependentUpon>AUTORIZATION.xaml</DependentUpon>
     </Compile>
@@ -107,6 +110,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EditControl.xaml.cs">
+      <DependentUpon>EditControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="producttable.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -116,18 +122,26 @@
     <Compile Include="users.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewControl.xaml.cs">
+      <DependentUpon>ViewControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewWindow.xaml.cs">
       <DependentUpon>ViewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="warehouse.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="the_tasks_of_the_director..xaml.cs">
-      <DependentUpon>the_tasks_of_the_director..xaml</DependentUpon>
-    </Compile>
+    <Page Include="AddControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditAdd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -156,11 +170,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewWindow.xaml">
+    <Page Include="ViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="the_tasks_of_the_director..xaml">
+    <Page Include="ViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
