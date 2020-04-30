@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmallBusiness.Forms.SubForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,32 @@ namespace SmallBusiness
             InitializeComponent();
             Main = this;
             Hide();
-            Window2 win = new Window2();
+            AuthorizationForm win = new AuthorizationForm();
             win.Show();
+        }
+
+        private void AddProducts(object sender, RoutedEventArgs e)
+        {
+            AddControl add = new AddControl();
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = "Добавление"
+            };
+            ControlView.Items.Add(item);
+            ControlView.SelectedItem = item;
+        }
+
+        private void ViewProducts(object sender, RoutedEventArgs e)
+        {
+            ViewControl view = new ViewControl();
+            TabItem item = new TabItem()
+            {
+                Content = view,
+                Header = "Просмотр товаров"
+            };
+            ControlView.Items.Add(item);
+            ControlView.SelectedItem = item;
         }
     }
 }

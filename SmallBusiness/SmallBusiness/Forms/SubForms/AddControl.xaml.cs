@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SmallBusiness
 {
     /// <summary>
-    /// Логика взаимодействия для ProductAdd.xaml
+    /// Логика взаимодействия для AddControl.xaml
     /// </summary>
-    public partial class ProductAdd : Window
+    public partial class AddControl : UserControl
     {
-        public ProductAdd()
+        public AddControl()
         {
             InitializeComponent();
         }
@@ -49,8 +50,7 @@ namespace SmallBusiness
             }
             MainWindow.Database.SaveChanges();
 
-            ViewWindow.self.UpdateBtnClick(null, null);
-            Close();
+            //ViewWindow.self.UpdateBtnClick(null, null);
         }
     }
 }

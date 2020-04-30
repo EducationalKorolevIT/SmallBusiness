@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="Товары">
+                <MenuItem Header="Добавить товар" Click="AddProducts"/>
+                <MenuItem Header="Просмотреть товары" Click="ViewProducts"/>
+            </MenuItem>
+            <MenuItem Header="Справка"/>
+            <MenuItem Header="О программе"/>
+        </Menu>
+
+        <TabControl Grid.Row="2" x:Name="ControlView">
+        </TabControl>
     </Grid>
 </Window>

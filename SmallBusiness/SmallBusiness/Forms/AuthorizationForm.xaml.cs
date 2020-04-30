@@ -17,9 +17,9 @@ namespace SmallBusiness
     /// <summary>
     /// Логика взаимодействия для Window2.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class AuthorizationForm : Window
     {
-        public Window2()
+        public AuthorizationForm()
         {
             InitializeComponent();
         }
@@ -39,9 +39,6 @@ namespace SmallBusiness
 
             if (userId != -1)
             {
-                // ProductAdd window = new ProductAdd();
-                ViewWindow window = new ViewWindow();
-                window.Show();
                 MainWindow.Main.Show();
                 Close();
             }

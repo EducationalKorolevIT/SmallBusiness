@@ -89,11 +89,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddControl.xaml.cs">
+    <Compile Include="Forms\SubForms\AddControl.xaml.cs">
       <DependentUpon>AddControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AUTORIZATION.xaml.cs">
-      <DependentUpon>AUTORIZATION.xaml</DependentUpon>
+    <Compile Include="Forms\AuthorizationForm.xaml.cs">
+      <DependentUpon>AuthorizationForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database.Context.cs">
       <AutoGen>True</AutoGen>
@@ -110,36 +110,33 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EditControl.xaml.cs">
+    <Compile Include="Forms\SubForms\EditControl.xaml.cs">
       <DependentUpon>EditControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubForms\ViewControl.xaml.cs">
+      <DependentUpon>ViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="producttable.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="the_tasks_of_the_employee.xaml.cs">
+    <Compile Include="Old\the_tasks_of_the_employee.xaml.cs">
       <DependentUpon>the_tasks_of_the_employee.xaml</DependentUpon>
     </Compile>
     <Compile Include="users.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewControl.xaml.cs">
-      <DependentUpon>ViewControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewWindow.xaml.cs">
-      <DependentUpon>ViewWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="warehouse.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Page Include="AddControl.xaml">
+    <Page Include="Forms\SubForms\AddControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditAdd.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Forms\SubForms\ViewControl.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditControl.xaml">
+    <Page Include="Forms\SubForms\EditControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,38 +148,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EditAdd.xaml.cs">
-      <DependentUpon>EditAdd.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ProductAdd.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AUTORIZATION.xaml">
+    <Page Include="Forms\AuthorizationForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="the_tasks_of_the_employee.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewWindow.xaml">
+    <Page Include="Old\the_tasks_of_the_employee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductAdd.xaml.cs">
-      <DependentUpon>ProductAdd.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -231,5 +210,6 @@
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

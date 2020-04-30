@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,32 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SmallBusiness
+namespace SmallBusiness.Forms.SubForms
 {
     /// <summary>
-    /// Логика взаимодействия для ViewWindow.xaml
+    /// Логика взаимодействия для ViewControl.xaml
     /// </summary>
-    public partial class ViewWindow : Window
+    public partial class ViewControl : UserControl
     {
-        public static ViewWindow self;
-        public ViewWindow()
+        public ViewControl()
         {
             InitializeComponent();
-            self = this;
-        }
-
-        private void AddProd(object sender, RoutedEventArgs e)
-        {
-            AddControl add = new AddControl();
-            TabItem item = new TabItem()
-            {
-                Content = add,
-                Header = "Добавление"
-            };
-            Tabs.Items.Add(item);
-            Tabs.SelectedItem = item;
         }
 
         private void DeleteProd(object sender, RoutedEventArgs e)
@@ -44,7 +30,7 @@ namespace SmallBusiness
             producttable p = (producttable)(DatabaseGrid.SelectedItem);
             MainWindow.Database.producttable.Remove(p);
             MainWindow.Database.SaveChanges();
-            ViewWindow.self.UpdateBtnClick(null, null);
+            //ViewWindow.self.UpdateBtnClick(null, null);
         }
 
         private void EditProd(object sender, RoutedEventArgs e)
@@ -56,28 +42,13 @@ namespace SmallBusiness
                 Content = add,
                 Header = "Редактирование"
             };
-            Tabs.Items.Add(item);
-            Tabs.SelectedItem = item;
-        }
-
-        private void BackBtnClick(object sender, RoutedEventArgs e)
-        {
-
+            MainWindow.Main.ControlView.Items.Add(item);
+            MainWindow.Main.ControlView.SelectedItem = item;
         }
 
         public void UpdateBtnClick(object sender, RoutedEventArgs e)
         {
             DatabaseGrid.ItemsSource = MainWindow.Database.producttable.ToList();
-        }
-
-        private void CloseTab(object sender, RoutedEventArgs e)
-        {
-            Tabs.Items.Remove(Tabs.SelectedItem);
-        }
-
-        private void ViewProds(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

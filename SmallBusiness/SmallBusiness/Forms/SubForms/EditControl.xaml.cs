@@ -50,7 +50,7 @@ namespace SmallBusiness
 
             MainWindow.Database.SaveChanges();
 
-            ViewWindow.self.UpdateBtnClick(null, null);
+            //ViewWindow.self.UpdateBtnClick(null, null);
         }
     }
 }
