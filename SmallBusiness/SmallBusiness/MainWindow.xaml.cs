@@ -90,7 +90,7 @@ namespace SmallBusiness
             ControlView.SelectedItem = item;
         }
 
-        void deleteBtnClk(object sender, RoutedEventArgs e)
+        public void deleteBtnClk(object sender, RoutedEventArgs e)
         {
             ControlView.Items.Remove(((FrameworkElement)((FrameworkElement)sender).Parent).Parent);
         }

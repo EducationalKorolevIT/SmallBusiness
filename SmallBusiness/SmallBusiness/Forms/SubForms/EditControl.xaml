@@ -39,7 +39,7 @@
         <Label Content="Описание:" Grid.Column="0" Grid.Row="10" FontSize="30"/>
         <Label Content="Артикул:" Grid.Column="0" Grid.Row="8" FontSize="30"/>
         <Label Content="Id" Grid.Column="0" Grid.Row="0" FontSize="30"/>
-        <Label Content="Редоктирование товара" Grid.Column="2" Grid.Row="0" FontSize="30" HorizontalAlignment="Center"/>
+        <Label Content="Редактирование товара" Grid.Column="2" Grid.Row="0" FontSize="30" HorizontalAlignment="Center"/>
         
 
     </Grid>
