@@ -35,10 +35,27 @@ namespace SmallBusiness
         private void AddProducts(object sender, RoutedEventArgs e)
         {
             AddControl add = new AddControl();
+            StackPanel element = new StackPanel();
+            element.Orientation = Orientation.Horizontal;
+
+            element.Children.Add(new TextBlock()
+            {
+                Text="Добавление товара "
+            });
+
+
+            Button btn = new Button();
+            btn.Click += deleteBtnClk;
+            btn.Content = "✕";
+            btn.Background = Brushes.Transparent;
+            btn.BorderThickness = new Thickness(0);
+
+
+            element.Children.Add(btn);
             TabItem item = new TabItem()
             {
                 Content = add,
-                Header = "Добавление"
+                Header = element
             };
             ControlView.Items.Add(item);
             ControlView.SelectedItem = item;
@@ -47,13 +64,35 @@ namespace SmallBusiness
         private void ViewProducts(object sender, RoutedEventArgs e)
         {
             ViewControl view = new ViewControl();
+            StackPanel element = new StackPanel();
+            element.Orientation = Orientation.Horizontal;
+
+            element.Children.Add(new TextBlock()
+            {
+                Text = "Просмотр товара "
+            });
+
+
+            Button btn = new Button();
+            btn.Click += deleteBtnClk;
+            btn.Content = "✕";
+            btn.Background = Brushes.Transparent;
+            btn.BorderThickness = new Thickness(0);
+
+
+            element.Children.Add(btn);
             TabItem item = new TabItem()
             {
                 Content = view,
-                Header = "Просмотр товаров"
+                Header = element
             };
             ControlView.Items.Add(item);
             ControlView.SelectedItem = item;
+        }
+
+        void deleteBtnClk(object sender, RoutedEventArgs e)
+        {
+            ControlView.Items.Remove(((FrameworkElement)((FrameworkElement)sender).Parent).Parent);
         }
     }
 }
