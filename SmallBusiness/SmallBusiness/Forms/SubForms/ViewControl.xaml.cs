@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace SmallBusiness.Forms.SubForms
         public ViewControl()
         {
             InitializeComponent();
+            MainWindow.Database.producttable.Load();
+            UpdateBtnClick(null, null);
         }
 
         private void DeleteProd(object sender, RoutedEventArgs e)
@@ -30,7 +33,7 @@ namespace SmallBusiness.Forms.SubForms
             producttable p = (producttable)(DatabaseGrid.SelectedItem);
             MainWindow.Database.producttable.Remove(p);
             MainWindow.Database.SaveChanges();
-            //ViewWindow.self.UpdateBtnClick(null, null);
+            UpdateBtnClick(null, null);
         }
 
         private void EditProd(object sender, RoutedEventArgs e)
