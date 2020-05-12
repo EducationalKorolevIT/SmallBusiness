@@ -26,6 +26,8 @@ namespace SmallBusiness
         public string Manufacturer { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+        public float UnitPerPrice { get; set; }
+        public string UnitType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<warehouse> warehouse { get; set; }

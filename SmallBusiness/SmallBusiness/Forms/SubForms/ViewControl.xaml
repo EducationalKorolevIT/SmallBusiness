@@ -18,6 +18,8 @@
                 <DataGridTextColumn Header="производитель" Width="*" Binding="{Binding Manufacturer}"/>
                 <DataGridTextColumn Header="описание" Width="*" Binding="{Binding Description}"/>
                 <DataGridTextColumn Header="артикул" Width="*" Binding="{Binding Article}"/>
+                <DataGridTextColumn Header="сколько за цену" Width="*" Binding="{Binding UnitPerPrice}"/>
+                <DataGridTextColumn Header="единица измерения" Width="*" Binding="{Binding UnitType}"/>
             </DataGrid.Columns>
         </DataGrid>
         

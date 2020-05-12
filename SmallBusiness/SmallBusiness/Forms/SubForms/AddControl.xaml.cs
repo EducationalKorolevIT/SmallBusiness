@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmallBusiness.Forms.SubForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,8 @@ namespace SmallBusiness
             String pArticle = ArticleField.Text;
             String pManufacturer = ManufacturerField.Text;
             String pDesc = DescriptionField.Text;
+            String pUPP = UPPField.Text;
+            String pUTP = UnitTypeField.Text;
             int pPrice = Convert.ToInt32(PriceField.Text);
             producttable pItem = new producttable()
             {
@@ -38,6 +41,8 @@ namespace SmallBusiness
                 Name = pName,
                 Manufacturer = pManufacturer,
                 Description = pDesc,
+                UnitPerPrice = Convert.ToSingle(pUPP),
+                UnitType = pUTP,
                 Price = pPrice
             };
 
@@ -50,7 +55,7 @@ namespace SmallBusiness
             }
             MainWindow.Database.SaveChanges();
 
-            //ViewWindow.self.UpdateBtnClick(null, null);
+            ViewControl.self.UpdateBtnClick(null, null);
         }
     }
 }

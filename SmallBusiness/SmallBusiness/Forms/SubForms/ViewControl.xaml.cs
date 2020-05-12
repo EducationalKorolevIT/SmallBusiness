@@ -21,11 +21,13 @@ namespace SmallBusiness.Forms.SubForms
     /// </summary>
     public partial class ViewControl : UserControl
     {
+        public static ViewControl self;
         public ViewControl()
         {
             InitializeComponent();
             MainWindow.Database.producttable.Load();
             UpdateBtnClick(null, null);
+            self = this;
         }
 
         private void DeleteProd(object sender, RoutedEventArgs e)

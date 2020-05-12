@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmallBusiness.Forms.SubForms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,10 @@ namespace SmallBusiness
             this.id = ent.id;
             NameField.Text = ent.Name;
             ArticleField.Text = ent.Article;
-            DescField.Text = ent.Description;
+            DescriptionField.Text = ent.Description;
             ManufacturerField.Text = ent.Manufacturer;
+            UPPField.Text= Convert.ToString(ent.UnitPerPrice);
+            UnitTypeField.Text = ent.UnitType;
             PriceField.Text = Convert.ToString(ent.Price);
         }
 
@@ -36,8 +39,10 @@ namespace SmallBusiness
         {
             String name = NameField.Text;
             String article = ArticleField.Text;
-            String descr = DescField.Text;
+            String descr = DescriptionField.Text;
             String manufacturer = ManufacturerField.Text;
+            String UTP = UnitTypeField.Text;
+            float UPP = Convert.ToSingle(UPPField.Text);
             float price = Convert.ToSingle(PriceField.Text);
 
             producttable prod = MainWindow.Database.producttable.FirstOrDefault(f => f.id == id);
@@ -47,10 +52,12 @@ namespace SmallBusiness
             prod.Description = descr;
             prod.Manufacturer = manufacturer;
             prod.Price = price;
+            prod.UnitPerPrice = UPP;
+            prod.UnitType = UTP;
 
             MainWindow.Database.SaveChanges();
 
-            //ViewWindow.self.UpdateBtnClick(null, null);
+            ViewControl.self.UpdateBtnClick(null, null);
         }
     }
 }
