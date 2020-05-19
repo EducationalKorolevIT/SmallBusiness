@@ -28,33 +28,36 @@ namespace SmallBusiness
 
         private void AddProdItem(object sender, RoutedEventArgs e)
         {
-            String pName = NameField.Text;
-            String pArticle = ArticleField.Text;
-            String pManufacturer = ManufacturerField.Text;
-            String pDesc = DescriptionField.Text;
-            String pUPP = UPPField.Text;
-            String pUTP = UnitTypeField.Text;
-            int pPrice = Convert.ToInt32(PriceField.Text);
-            producttable pItem = new producttable()
+            try
             {
-                Article = pArticle,
-                Name = pName,
-                Manufacturer = pManufacturer,
-                Description = pDesc,
-                UnitPerPrice = Convert.ToSingle(pUPP),
-                UnitType = pUTP,
-                Price = pPrice
-            };
+                String pName = NameField.Text;
+                String pArticle = ArticleField.Text;
+                String pManufacturer = ManufacturerField.Text;
+                String pDesc = DescriptionField.Text;
+                String pUPP = UPPField.Text;
+                String pUTP = UnitTypeField.Text;
+                int pPrice = Convert.ToInt32(PriceField.Text);
+                producttable pItem = new producttable()
+                {
+                    Article = pArticle,
+                    Name = pName,
+                    Manufacturer = pManufacturer,
+                    Description = pDesc,
+                    UnitPerPrice = Convert.ToSingle(pUPP),
+                    UnitType = pUTP,
+                    Price = pPrice
+                };
 
-            producttable fItem = MainWindow.Database.producttable.FirstOrDefault(f => f.Name == pName && f.Description == pDesc && f.Article == pArticle && f.Manufacturer == pManufacturer);
+                producttable fItem = MainWindow.Database.producttable.FirstOrDefault(f => f.Name == pName && f.Description == pDesc && f.Article == pArticle && f.Manufacturer == pManufacturer);
 
-            if (fItem == null)
-            {
-                MainWindow.Database.producttable.Add(pItem);
-                fItem = pItem;
+                if (fItem == null)
+                {
+                    MainWindow.Database.producttable.Add(pItem);
+                    fItem = pItem;
+                }
+                MainWindow.Database.SaveChanges();
             }
-            MainWindow.Database.SaveChanges();
-
+            catch (Exception ex) { }
             ViewControl.self.UpdateBtnClick(null, null);
         }
     }

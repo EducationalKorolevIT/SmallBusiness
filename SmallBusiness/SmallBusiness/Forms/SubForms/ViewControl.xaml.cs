@@ -32,40 +32,48 @@ namespace SmallBusiness.Forms.SubForms
 
         private void DeleteProd(object sender, RoutedEventArgs e)
         {
-            producttable p = (producttable)(DatabaseGrid.SelectedItem);
-            MainWindow.Database.producttable.Remove(p);
-            MainWindow.Database.SaveChanges();
-            UpdateBtnClick(null, null);
+            try
+            {
+                producttable p = (producttable)(DatabaseGrid.SelectedItem);
+                MainWindow.Database.producttable.Remove(p);
+                MainWindow.Database.SaveChanges();
+                UpdateBtnClick(null, null);
+            }
+            catch (Exception ex) { MessageBox.Show("Выберите элемент для удаления","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
         private void EditProd(object sender, RoutedEventArgs e)
         {
-            producttable p = (producttable)(DatabaseGrid.SelectedItem);
-            StackPanel element = new StackPanel();
-            EditControl edit = new EditControl(p);
-            element.Orientation = Orientation.Horizontal;
-
-            element.Children.Add(new TextBlock()
+            try
             {
-                Text = "Добавление товара "
-            });
+                producttable p = (producttable)(DatabaseGrid.SelectedItem);
+                StackPanel element = new StackPanel();
+                EditControl edit = new EditControl(p);
+                element.Orientation = Orientation.Horizontal;
+
+                element.Children.Add(new TextBlock()
+                {
+                    Text = "Добавление товара "
+                });
 
 
-            Button btn = new Button();
-            btn.Click += ((MainWindow)((Grid)((TabControl)((TabItem)Parent).Parent).Parent).Parent).deleteBtnClk;
-            btn.Content = "✕";
-            btn.Background = Brushes.Transparent;
-            btn.BorderThickness = new Thickness(0);
+                Button btn = new Button();
+                btn.Click += ((MainWindow)((Grid)((TabControl)((TabItem)Parent).Parent).Parent).Parent).deleteBtnClk;
+                btn.Content = "✕";
+                btn.Background = Brushes.Transparent;
+                btn.BorderThickness = new Thickness(0);
 
 
-            element.Children.Add(btn);
-            TabItem item = new TabItem()
-            {
-                Content = edit,
-                Header = element
-            };
-            MainWindow.Main.ControlView.Items.Add(item);
-            MainWindow.Main.ControlView.SelectedItem = item;
+                element.Children.Add(btn);
+                TabItem item = new TabItem()
+                {
+                    Content = edit,
+                    Header = element
+                };
+                MainWindow.Main.ControlView.Items.Add(item);
+                MainWindow.Main.ControlView.SelectedItem = item;
+            }
+            catch (Exception ex) { MessageBox.Show("Выберите элемент для редактирования", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
         public void UpdateBtnClick(object sender, RoutedEventArgs e)

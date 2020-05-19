@@ -40,6 +40,8 @@ namespace SmallBusiness
             if (userId != -1)
             {
                 MainWindow.Main.Show();
+                MainWindow.Main.havePermission = MainWindow.Database.users.FirstOrDefault(f => f.id == userId).userType==1;
+                MainWindow.Main.updatePermissions();
                 Close();
             }
             else

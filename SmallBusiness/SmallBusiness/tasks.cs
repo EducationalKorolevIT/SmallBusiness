@@ -12,12 +12,13 @@ namespace SmallBusiness
     using System;
     using System.Collections.Generic;
     
-    public partial class warehouse
+    public partial class tasks
     {
         public int id { get; set; }
-        public int id_product { get; set; }
-        public int Quantity { get; set; }
+        public string TaskText { get; set; }
+        public string TaskTheme { get; set; }
+        public int ToUser { get; set; }
     
-        public virtual producttable producttable { get; set; }
+        public virtual users users { get; set; }
     }
 }

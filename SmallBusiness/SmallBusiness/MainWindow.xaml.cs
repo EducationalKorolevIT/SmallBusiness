@@ -23,6 +23,7 @@ namespace SmallBusiness
     {
         public static smallbusinessEntities Database = new smallbusinessEntities();
         public static MainWindow Main;
+        public bool havePermission = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -90,9 +91,73 @@ namespace SmallBusiness
             ControlView.SelectedItem = item;
         }
 
+        public void updatePermissions()
+        {
+            AddTaskItem.IsEnabled = havePermission;
+        }
+
         public void deleteBtnClk(object sender, RoutedEventArgs e)
         {
             ControlView.Items.Remove(((FrameworkElement)((FrameworkElement)sender).Parent).Parent);
+        }
+
+        private void ViewTasks(object sender, RoutedEventArgs e)
+        {
+            ViewTasksControl add = new ViewTasksControl(havePermission);
+            StackPanel element = new StackPanel();
+            element.Orientation = Orientation.Horizontal;
+
+            element.Children.Add(new TextBlock()
+            {
+                Text = "Просмотр задач "
+            });
+
+
+            Button btn = new Button();
+            btn.Click += deleteBtnClk;
+            btn.Content = "✕";
+            btn.Background = Brushes.Transparent;
+            btn.BorderThickness = new Thickness(0);
+
+
+            element.Children.Add(btn);
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = element
+            };
+            ControlView.Items.Add(item);
+            ControlView.SelectedItem = item;
+        }
+
+        private void AddTask(object sender, RoutedEventArgs e)
+        {
+            AddTaskControl add = new AddTaskControl();
+            StackPanel element = new StackPanel();
+            element.Orientation = Orientation.Horizontal;
+
+            element.Children.Add(new TextBlock()
+            {
+                Text = "Добавление задачи "
+            });
+
+
+            Button btn = new Button();
+            btn.Click += deleteBtnClk;
+            btn.Content = "✕";
+            btn.Background = Brushes.Transparent;
+            btn.BorderThickness = new Thickness(0);
+
+
+            element.Children.Add(btn);
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = element
+            };
+            ControlView.Items.Add(item);
+            ControlView.SelectedItem = item;
+            add.itemToDelete = item;
         }
     }
 }

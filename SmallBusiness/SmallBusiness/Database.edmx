@@ -18,6 +18,15 @@
           <Property Name="UnitPerPrice" Type="float" Nullable="false" />
           <Property Name="UnitType" Type="varchar" MaxLength="8" Nullable="false" />
         </EntityType>
+        <EntityType Name="tasks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskText" Type="text" Nullable="false" />
+          <Property Name="TaskTheme" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ToUser" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id" />
@@ -25,6 +34,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="userType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="warehouse">
           <Key>
@@ -32,9 +42,21 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_product" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="Packing" Type="float" Nullable="false" />
-          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.smallbusiness.tasks_view" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="tasks_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="taskText" />
+            <PropertyRef Name="taskTheme" />
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="taskText" Type="text" Nullable="false" />
+          <Property Name="taskTheme" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <Association Name="FK_PRODUCT_ID">
           <End Role="producttable" Type="Self.producttable" Multiplicity="1" />
@@ -48,13 +70,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_USER_ID">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="tasks" Type="Self.tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tasks">
+              <PropertyRef Name="ToUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище smallbusinessModelContainer">
           <EntitySet Name="producttable" EntityType="Self.producttable" Schema="smallbusiness" store:Type="Tables" />
+          <EntitySet Name="tasks" EntityType="Self.tasks" Schema="smallbusiness" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="smallbusiness" store:Type="Tables" />
           <EntitySet Name="warehouse" EntityType="Self.warehouse" Schema="smallbusiness" store:Type="Tables" />
+          <EntitySet Name="tasks_view" EntityType="Self.tasks_view" store:Type="Views" store:Schema="smallbusiness">
+            <DefiningQuery>SELECT
+`tasks_view`.`id`, 
+`tasks_view`.`taskText`, 
+`tasks_view`.`taskTheme`, 
+`tasks_view`.`userName`
+FROM `tasks_view` AS `tasks_view`</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_PRODUCT_ID" Association="Self.FK_PRODUCT_ID">
             <End Role="producttable" EntitySet="producttable" />
             <End Role="warehouse" EntitySet="warehouse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_ID" Association="Self.FK_USER_ID">
+            <End Role="users" EntitySet="users" />
+            <End Role="tasks" EntitySet="tasks" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -82,6 +129,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="login" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tasks" Relationship="smallbusinessModel.FK_USER_ID" FromRole="users" ToRole="tasks" />
         </EntityType>
         <EntityType Name="warehouse">
           <Key>
@@ -90,8 +139,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_product" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="Packing" Type="Single" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="producttable" Relationship="Self.FK_PRODUCT_ID" FromRole="warehouse" ToRole="producttable" />
         </EntityType>
         <Association Name="FK_PRODUCT_ID">
@@ -114,7 +161,47 @@
             <End Role="producttable" EntitySet="producttable" />
             <End Role="warehouse" EntitySet="warehouse" />
           </AssociationSet>
+          <EntitySet Name="tasks" EntityType="smallbusinessModel.tasks" />
+          <EntitySet Name="tasks_view" EntityType="smallbusinessModel.tasks_view" />
+          <AssociationSet Name="FK_USER_ID" Association="smallbusinessModel.FK_USER_ID">
+            <End Role="users" EntitySet="users" />
+            <End Role="tasks" EntitySet="tasks" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tasks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskText" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="TaskTheme" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ToUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="smallbusinessModel.FK_USER_ID" FromRole="tasks" ToRole="users" />
+        </EntityType>
+        <EntityType Name="tasks_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="taskText" />
+            <PropertyRef Name="taskTheme" />
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="taskText" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="taskTheme" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="userName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_USER_ID">
+          <End Type="smallbusinessModel.users" Role="users" Multiplicity="1" />
+          <End Type="smallbusinessModel.tasks" Role="tasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tasks">
+              <PropertyRef Name="ToUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -138,6 +225,7 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="smallbusinessModel.users">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="userType" ColumnName="userType" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -150,8 +238,26 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_product" ColumnName="id_product" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Packing" ColumnName="Packing" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tasks">
+            <EntityTypeMapping TypeName="smallbusinessModel.tasks">
+              <MappingFragment StoreEntitySet="tasks">
+                <ScalarProperty Name="ToUser" ColumnName="ToUser" />
+                <ScalarProperty Name="TaskTheme" ColumnName="TaskTheme" />
+                <ScalarProperty Name="TaskText" ColumnName="TaskText" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tasks_view">
+            <EntityTypeMapping TypeName="smallbusinessModel.tasks_view">
+              <MappingFragment StoreEntitySet="tasks_view">
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="taskTheme" ColumnName="taskTheme" />
+                <ScalarProperty Name="taskText" ColumnName="taskText" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

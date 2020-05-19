@@ -110,17 +110,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SubForms\AddTaskControl.xaml.cs">
+      <DependentUpon>AddTaskControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SubForms\EditControl.xaml.cs">
       <DependentUpon>EditControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\SubForms\ViewControl.xaml.cs">
       <DependentUpon>ViewControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SubForms\ViewTasksControl.xaml.cs">
+      <DependentUpon>ViewTasksControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="producttable.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Old\the_tasks_of_the_employee.xaml.cs">
       <DependentUpon>the_tasks_of_the_employee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tasks.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tasks_view.cs">
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="users.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -132,11 +144,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\SubForms\AddTaskControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\SubForms\ViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\SubForms\EditControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SubForms\ViewTasksControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
