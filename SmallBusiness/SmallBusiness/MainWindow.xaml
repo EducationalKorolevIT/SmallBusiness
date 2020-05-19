@@ -17,6 +17,10 @@
                 <MenuItem Header="Добавить товар" Click="AddProducts"/>
                 <MenuItem Header="Просмотреть товары" Click="ViewProducts"/>
             </MenuItem>
+            <MenuItem Header="Задачи">
+                <MenuItem Header="Просмотреть задачи" Click="ViewTasks"/>
+                <MenuItem Header="Добавить задачу" Click="AddTask" x:Name="AddTaskItem"/>
+            </MenuItem>
             <MenuItem Header="Справка"/>
             <MenuItem Header="О программе"/>
         </Menu>

@@ -17,14 +17,14 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1" MaxHeight="150" MaxWidth="300">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="46*"/>
-                <RowDefinition Height="47*"/>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition Height="46.4"/>
             </Grid.RowDefinitions>
             <Label Content="Логин" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Height="31" Width="120" RenderTransformOrigin="0.5,0.5" FontFamily="VesnaC" FontSize="16">
@@ -43,9 +43,7 @@
             <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="7.2,10,0,0" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.146,0.545" Height="30" x:Name="LoginField"/>
             <PasswordBox Grid.Column="1" HorizontalAlignment="Left" Margin="8.2,8.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="119" RenderTransformOrigin="0.444,0.58" Height="28" x:Name="PasswordField"/>
         </Grid>
-        <Label Content="SMALLBUSINESS" Grid.Column="1" HorizontalAlignment="Left" Margin="20.2,40,0,0" VerticalAlignment="Top" Height="65" Width="230" FontFamily="Txt" FontSize="24"/>
-        <Menu Grid.Column="1" HorizontalAlignment="Left" Height="120" Margin="5.2,5,0,0" Grid.Row="2" VerticalAlignment="Top" Width="250">
-            <Label Content="1. Учёт и просмотр товара на складе&#xD;&#xA;2. Упрощение работы сотрудников &#xD;&#xA;3. Журнал задач руководителя&#xD;&#xA;4. Предложения по товару" Height="95" Width="235" FontFamily="VesnaC" FontSize="14"/>
-        </Menu>
+        <Label Content="SMALL BUSINESS" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Txt" FontSize="24"/>
+        <Label Content="1. Учёт и просмотр товара на складе&#xD;&#xA;2. Упрощение работы сотрудников &#xD;&#xA;3. Журнал задач руководителя" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontFamily="VesnaC" FontSize="14" Grid.Row="2" Grid.Column="1"/>
     </Grid>
 </Window>

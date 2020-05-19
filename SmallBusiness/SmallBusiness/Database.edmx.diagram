@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="smallbusinessModel.users" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="smallbusinessModel.warehouse" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="smallbusinessModel.FK_PRODUCT_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="smallbusinessModel.tasks" Width="1.5" PointX="3.125" PointY="4.75" />
+        <EntityTypeShape EntityType="smallbusinessModel.tasks_view" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="smallbusinessModel.FK_USER_ID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

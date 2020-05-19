@@ -28,5 +28,7 @@ namespace SmallBusiness
         public virtual DbSet<producttable> producttable { get; set; }
         public virtual DbSet<users> users { get; set; }
         public virtual DbSet<warehouse> warehouse { get; set; }
+        public virtual DbSet<tasks> tasks { get; set; }
+        public virtual DbSet<tasks_view> tasks_view { get; set; }
     }
 }
