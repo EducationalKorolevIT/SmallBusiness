@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmallBusiness.HelpClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,15 @@ namespace SmallBusiness
         public AuthorizationForm()
         {
             InitializeComponent();
+            bool ischk=false;
+            string s1="", s2="";
+            Settings.LoadAccount(ref s1, ref s2, ref ischk);
+            SaveLP.IsChecked = ischk;
+            if (ischk)
+            {
+                LoginField.Text = s1;
+                PasswordField.Password = s2;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,6 +52,7 @@ namespace SmallBusiness
                 MainWindow.Main.Show();
                 MainWindow.Main.havePermission = MainWindow.Database.users.FirstOrDefault(f => f.id == userId).userType==1;
                 MainWindow.Main.updatePermissions();
+                Settings.SaveAccount(userName, userPass, (bool)SaveLP.IsChecked);
                 Close();
             }
             else

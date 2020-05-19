@@ -122,6 +122,7 @@
     <Compile Include="Forms\SubForms\ViewTasksControl.xaml.cs">
       <DependentUpon>ViewTasksControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HelpClasses\Settings.cs" />
     <Compile Include="producttable.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
