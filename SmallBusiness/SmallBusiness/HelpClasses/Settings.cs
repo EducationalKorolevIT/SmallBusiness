@@ -31,5 +31,26 @@ namespace SmallBusiness.HelpClasses
                 SB.Close();
             }
         }
+
+        public static void SaveIP(string ipadress)
+        {
+            RegistryKey CurrentUser = Registry.CurrentUser;
+            RegistryKey IP = CurrentUser.CreateSubKey("SmallBusiness");
+            IP.SetValue("IP", ipadress);
+            IP.Close();
+        }
+
+        public static string LoadIP()
+        {
+            RegistryKey CurrentUser = Registry.CurrentUser;
+            RegistryKey IP = CurrentUser.OpenSubKey("SmallBusiness");
+            string ip = "127.0.0.1";
+            if (IP != null) {
+            
+                ip = IP.GetValue("IP").ToString();
+            }
+            IP.Close();
+            return ip;
+        }
     }
 }
