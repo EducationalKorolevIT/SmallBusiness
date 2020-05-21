@@ -30,5 +30,8 @@ namespace SmallBusiness
         public virtual DbSet<warehouse> warehouse { get; set; }
         public virtual DbSet<tasks> tasks { get; set; }
         public virtual DbSet<tasks_view> tasks_view { get; set; }
+        public virtual DbSet<warehouse_operations> warehouse_operations { get; set; }
+        public virtual DbSet<warehouse_ops_view> warehouse_ops_view { get; set; }
+        public virtual DbSet<warehouse_view> warehouse_view { get; set; }
     }
 }

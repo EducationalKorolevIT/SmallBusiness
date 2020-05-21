@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmallBusiness"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800" MinHeight="600" MinWidth="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,6 +20,10 @@
             <MenuItem Header="Задачи">
                 <MenuItem Header="Просмотреть задачи" Click="ViewTasks"/>
                 <MenuItem Header="Добавить задачу" Click="AddTask" x:Name="AddTaskItem"/>
+            </MenuItem>
+            <MenuItem Header="Склад">
+                <MenuItem Header="Просмотреть склад" Click="ViewWarehouse"/>
+                <MenuItem Header="Добавить на склад (или убрать)" Click="AddToWarehouse"/>
             </MenuItem>
             <MenuItem Header="Справка"/>
             <MenuItem Header="О программе"/>

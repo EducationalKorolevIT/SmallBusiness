@@ -56,9 +56,9 @@ namespace SmallBusiness
                     fItem = pItem;
                 }
                 MainWindow.Database.SaveChanges();
+                if(ViewControl.self!=null)ViewControl.self.UpdateBtnClick(null, null);
             }
             catch (Exception ex) { }
-            ViewControl.self.UpdateBtnClick(null, null);
         }
     }
 }

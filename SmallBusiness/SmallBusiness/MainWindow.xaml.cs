@@ -159,5 +159,65 @@ namespace SmallBusiness
             ControlView.SelectedItem = item;
             add.itemToDelete = item;
         }
+
+        private void AddToWarehouse(object sender, RoutedEventArgs e)
+        {
+            AddToWarehouseControl add = new AddToWarehouseControl();
+            StackPanel element = new StackPanel();
+            element.Orientation = Orientation.Horizontal;
+
+            element.Children.Add(new TextBlock()
+            {
+                Text = "Добавление на склад "
+            });
+
+
+            Button btn = new Button();
+            btn.Click += deleteBtnClk;
+            btn.Content = "✕";
+            btn.Background = Brushes.Transparent;
+            btn.BorderThickness = new Thickness(0);
+
+
+            element.Children.Add(btn);
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = element
+            };
+            ControlView.Items.Add(item);
+            ControlView.SelectedItem = item;
+            add.itemToDelete = item;
+        }
+
+        private void ViewWarehouse(object sender, RoutedEventArgs e)
+        {
+            WarehouseView add = new WarehouseView();
+            StackPanel element = new StackPanel();
+            element.Orientation = Orientation.Horizontal;
+
+            element.Children.Add(new TextBlock()
+            {
+                Text = "Просмотр склада "
+            });
+
+
+            Button btn = new Button();
+            btn.Click += deleteBtnClk;
+            btn.Content = "✕";
+            btn.Background = Brushes.Transparent;
+            btn.BorderThickness = new Thickness(0);
+
+
+            element.Children.Add(btn);
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = element
+            };
+            ControlView.Items.Add(item);
+            ControlView.SelectedItem = item;
+            add.itemToDelete = item;
+        }
     }
 }

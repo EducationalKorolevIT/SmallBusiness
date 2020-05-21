@@ -44,6 +44,15 @@
           <Property Name="id_product" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="float" Nullable="false" />
         </EntityType>
+        <EntityType Name="warehouse_operations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_warehouse" Type="int" Nullable="false" />
+          <Property Name="QuantityDelta" Type="float" Nullable="false" />
+          <Property Name="ChangeTime" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "def.smallbusiness.tasks_view" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="tasks_view">
@@ -57,6 +66,34 @@
           <Property Name="taskText" Type="text" Nullable="false" />
           <Property Name="taskTheme" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="userName" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.smallbusiness.warehouse_ops_view" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="warehouse_ops_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="QuantityDelta" />
+            <PropertyRef Name="ChangeTime" />
+            <PropertyRef Name="productId" />
+            <PropertyRef Name="productName" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="QuantityDelta" Type="float" Nullable="false" />
+          <Property Name="ChangeTime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="productId" Type="int" Nullable="false" />
+          <Property Name="productName" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.smallbusiness.warehouse_view" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="warehouse_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
         </EntityType>
         <Association Name="FK_PRODUCT_ID">
           <End Role="producttable" Type="Self.producttable" Multiplicity="1" />
@@ -82,11 +119,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WAREHOUSE_ID">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="warehouse_operations" Type="Self.warehouse_operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="warehouse_operations">
+              <PropertyRef Name="id_warehouse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище smallbusinessModelContainer">
           <EntitySet Name="producttable" EntityType="Self.producttable" Schema="smallbusiness" store:Type="Tables" />
           <EntitySet Name="tasks" EntityType="Self.tasks" Schema="smallbusiness" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="smallbusiness" store:Type="Tables" />
           <EntitySet Name="warehouse" EntityType="Self.warehouse" Schema="smallbusiness" store:Type="Tables" />
+          <EntitySet Name="warehouse_operations" EntityType="Self.warehouse_operations" Schema="smallbusiness" store:Type="Tables" />
           <EntitySet Name="tasks_view" EntityType="Self.tasks_view" store:Type="Views" store:Schema="smallbusiness">
             <DefiningQuery>SELECT
 `tasks_view`.`id`, 
@@ -95,6 +145,22 @@
 `tasks_view`.`userName`
 FROM `tasks_view` AS `tasks_view`</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="warehouse_ops_view" EntityType="Self.warehouse_ops_view" store:Type="Views" store:Schema="smallbusiness">
+            <DefiningQuery>SELECT
+`warehouse_ops_view`.`id`, 
+`warehouse_ops_view`.`QuantityDelta`, 
+`warehouse_ops_view`.`ChangeTime`, 
+`warehouse_ops_view`.`productId`, 
+`warehouse_ops_view`.`productName`
+FROM `warehouse_ops_view` AS `warehouse_ops_view`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="warehouse_view" EntityType="Self.warehouse_view" store:Type="Views" store:Schema="smallbusiness">
+            <DefiningQuery>SELECT
+`warehouse_view`.`id`, 
+`warehouse_view`.`Name`, 
+`warehouse_view`.`Quantity`
+FROM `warehouse_view` AS `warehouse_view`</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_PRODUCT_ID" Association="Self.FK_PRODUCT_ID">
             <End Role="producttable" EntitySet="producttable" />
             <End Role="warehouse" EntitySet="warehouse" />
@@ -102,6 +168,10 @@ FROM `tasks_view` AS `tasks_view`</DefiningQuery>
           <AssociationSet Name="FK_USER_ID" Association="Self.FK_USER_ID">
             <End Role="users" EntitySet="users" />
             <End Role="tasks" EntitySet="tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAREHOUSE_ID" Association="Self.FK_WAREHOUSE_ID">
+            <End Role="warehouse" EntitySet="warehouse" />
+            <End Role="warehouse_operations" EntitySet="warehouse_operations" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -140,6 +210,7 @@ FROM `tasks_view` AS `tasks_view`</DefiningQuery>
           <Property Name="id_product" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="producttable" Relationship="Self.FK_PRODUCT_ID" FromRole="warehouse" ToRole="producttable" />
+          <NavigationProperty Name="warehouse_operations" Relationship="smallbusinessModel.FK_WAREHOUSE_ID" FromRole="warehouse" ToRole="warehouse_operations" />
         </EntityType>
         <Association Name="FK_PRODUCT_ID">
           <End Role="producttable" Type="Self.producttable" Multiplicity="1" />
@@ -167,6 +238,13 @@ FROM `tasks_view` AS `tasks_view`</DefiningQuery>
             <End Role="users" EntitySet="users" />
             <End Role="tasks" EntitySet="tasks" />
           </AssociationSet>
+          <EntitySet Name="warehouse_operations" EntityType="smallbusinessModel.warehouse_operations" />
+          <AssociationSet Name="FK_WAREHOUSE_ID" Association="smallbusinessModel.FK_WAREHOUSE_ID">
+            <End Role="warehouse" EntitySet="warehouse" />
+            <End Role="warehouse_operations" EntitySet="warehouse_operations" />
+          </AssociationSet>
+          <EntitySet Name="warehouse_ops_view" EntityType="smallbusinessModel.warehouse_ops_view" />
+          <EntitySet Name="warehouse_view" EntityType="smallbusinessModel.warehouse_view" />
         </EntityContainer>
         <EntityType Name="tasks">
           <Key>
@@ -202,6 +280,52 @@ FROM `tasks_view` AS `tasks_view`</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="warehouse_operations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_warehouse" Type="Int32" Nullable="false" />
+          <Property Name="QuantityDelta" Type="Single" Nullable="false" />
+          <Property Name="ChangeTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="warehouse" Relationship="smallbusinessModel.FK_WAREHOUSE_ID" FromRole="warehouse_operations" ToRole="warehouse" />
+        </EntityType>
+        <Association Name="FK_WAREHOUSE_ID">
+          <End Type="smallbusinessModel.warehouse" Role="warehouse" Multiplicity="1" />
+          <End Type="smallbusinessModel.warehouse_operations" Role="warehouse_operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="warehouse_operations">
+              <PropertyRef Name="id_warehouse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="warehouse_ops_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="QuantityDelta" />
+            <PropertyRef Name="ChangeTime" />
+            <PropertyRef Name="productId" />
+            <PropertyRef Name="productName" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="QuantityDelta" Type="Single" Nullable="false" />
+          <Property Name="ChangeTime" Type="DateTime" Nullable="false" />
+          <Property Name="productId" Type="Int32" Nullable="false" />
+          <Property Name="productName" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="warehouse_view">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Single" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -257,6 +381,36 @@ FROM `tasks_view` AS `tasks_view`</DefiningQuery>
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="taskTheme" ColumnName="taskTheme" />
                 <ScalarProperty Name="taskText" ColumnName="taskText" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warehouse_operations">
+            <EntityTypeMapping TypeName="smallbusinessModel.warehouse_operations">
+              <MappingFragment StoreEntitySet="warehouse_operations">
+                <ScalarProperty Name="ChangeTime" ColumnName="ChangeTime" />
+                <ScalarProperty Name="QuantityDelta" ColumnName="QuantityDelta" />
+                <ScalarProperty Name="id_warehouse" ColumnName="id_warehouse" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warehouse_ops_view">
+            <EntityTypeMapping TypeName="smallbusinessModel.warehouse_ops_view">
+              <MappingFragment StoreEntitySet="warehouse_ops_view">
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="ChangeTime" ColumnName="ChangeTime" />
+                <ScalarProperty Name="QuantityDelta" ColumnName="QuantityDelta" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warehouse_view">
+            <EntityTypeMapping TypeName="smallbusinessModel.warehouse_view">
+              <MappingFragment StoreEntitySet="warehouse_view">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
