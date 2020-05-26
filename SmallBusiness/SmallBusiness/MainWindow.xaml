@@ -12,18 +12,18 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <Menu Background="#1a1a1a" Foreground="#a1a1a1">
+        <Menu Background="#1a1a1a" Foreground="#a1a1a1" BorderThickness="0">
             <MenuItem Header="Товары">
-                <MenuItem Header="Добавить товар" Click="AddProducts"/>
-                <MenuItem Header="Просмотреть товары" Click="ViewProducts"/>
+                <MenuItem Header="Добавить товар" Click="AddProducts" Background="#1a1a1a"/>
+                <MenuItem Header="Просмотреть товары" Click="ViewProducts" Background="#1a1a1a"/>
             </MenuItem>
             <MenuItem Header="Задачи">
-                <MenuItem Header="Просмотреть задачи" Click="ViewTasks"/>
-                <MenuItem Header="Добавить задачу" Click="AddTask" x:Name="AddTaskItem"/>
+                <MenuItem Header="Просмотреть задачи" Click="ViewTasks" Background="#1a1a1a"/>
+                <MenuItem Header="Добавить задачу" Click="AddTask" x:Name="AddTaskItem" Background="#1a1a1a"/>
             </MenuItem>
             <MenuItem Header="Склад">
-                <MenuItem Header="Просмотреть склад" Click="ViewWarehouse"/>
-                <MenuItem Header="Добавить на склад (или убрать)" Click="AddToWarehouse"/>
+                <MenuItem Header="Просмотреть склад" Click="ViewWarehouse" Background="#1a1a1a"/>
+                <MenuItem Header="Добавить на склад (или убрать)" Click="AddToWarehouse" Background="#1a1a1a"/>
             </MenuItem>
             <MenuItem Header="Авторы проекта" Click="ViewAutors"/>
         </Menu>

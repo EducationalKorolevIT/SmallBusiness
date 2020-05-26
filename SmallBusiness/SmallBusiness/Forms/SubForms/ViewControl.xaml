@@ -6,13 +6,28 @@
              xmlns:local="clr-namespace:SmallBusiness.Forms.SubForms"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#696969"/>
+            <Setter Property="Foreground" Value="#a1a1a1"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#696969"/>
+            <Setter Property="Foreground" Value="#a1a1a1"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#a1a1a1"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="DatabaseGrid" AutoGenerateColumns="False" Grid.Row="0">
-            <DataGrid.Columns >
+        <DataGrid x:Name="DatabaseGrid" AutoGenerateColumns="False" Grid.Row="0" Background="#696969">
+            <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="цена" Width="*" Binding="{Binding Price}"/>
                 <DataGridTextColumn Header="производитель" Width="*" Binding="{Binding Manufacturer}"/>
