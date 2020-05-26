@@ -25,8 +25,7 @@
                 <MenuItem Header="Просмотреть склад" Click="ViewWarehouse"/>
                 <MenuItem Header="Добавить на склад (или убрать)" Click="AddToWarehouse"/>
             </MenuItem>
-            <MenuItem Header="Справка"/>
-            <MenuItem Header="О программе"/>
+            <MenuItem Header="Авторы проекта" Click="ViewAutors"/>
         </Menu>
 
         <TabControl Grid.Row="2" x:Name="ControlView">
