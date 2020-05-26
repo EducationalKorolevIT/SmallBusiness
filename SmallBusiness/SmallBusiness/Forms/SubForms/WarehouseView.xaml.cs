@@ -25,6 +25,13 @@ namespace SmallBusiness.Forms.SubForms
         {
             InitializeComponent();
             WarehouseDataGrid.ItemsSource = MainWindow.Database.warehouse_view.ToList();
+            WarehouseOpsDataGrid.ItemsSource = MainWindow.Database.warehouse_ops_view.ToList();
+        }
+
+        private void Update(object sender, RoutedEventArgs e)
+        {
+            WarehouseDataGrid.ItemsSource = MainWindow.Database.warehouse_view.ToList();
+            WarehouseOpsDataGrid.ItemsSource = MainWindow.Database.warehouse_ops_view.ToList();
         }
     }
 }

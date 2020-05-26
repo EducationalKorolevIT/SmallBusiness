@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmallBusiness"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" MinHeight="600" MinWidth="600">
+        Title="MainWindow" Height="600" Width="800" MinHeight="600" MinWidth="600" Background="#1a1a1a">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <Menu>
+        <Menu Background="#1a1a1a" Foreground="#a1a1a1">
             <MenuItem Header="Товары">
                 <MenuItem Header="Добавить товар" Click="AddProducts"/>
                 <MenuItem Header="Просмотреть товары" Click="ViewProducts"/>
@@ -29,7 +29,7 @@
             <MenuItem Header="О программе"/>
         </Menu>
 
-        <TabControl Grid.Row="2" x:Name="ControlView">
+        <TabControl Grid.Row="2" x:Name="ControlView" Background="#1a1a1a">
         </TabControl>
     </Grid>
 </Window>

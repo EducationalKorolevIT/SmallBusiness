@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1.Cms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,8 +44,23 @@ namespace SmallBusiness.Forms.SubForms
             if (exItem == null)
             {
                 MainWindow.Database.warehouse.Add(whItem);
-                MainWindow.Database.SaveChanges();
             }
+            else
+            {
+                exItem.Quantity += quantity;
+                whItem = exItem;
+            }
+
+            warehouse_operations whop = new warehouse_operations()
+            {
+                ChangeTime = DateTime.Now,
+                id_warehouse = whItem.id,
+                QuantityDelta = quantity
+            };
+
+            MainWindow.Database.warehouse_operations.Add(whop);
+
+            MainWindow.Database.SaveChanges();
         }
     }
 }

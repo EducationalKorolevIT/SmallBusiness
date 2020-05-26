@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="30"/>
             <ColumnDefinition Width="Auto"/>
@@ -19,5 +23,14 @@
                 <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <DataGrid Grid.Column="2" x:Name="WarehouseOpsDataGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя продукта" Binding="{Binding productName}" Width="Auto"/>
+                <DataGridTextColumn Header="Изменение количества" Binding="{Binding QuantityDelta}" Width="Auto"/>
+                <DataGridTextColumn Header="Время изменения" Binding="{Binding ChangeTime}" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Обновить" Click="Update" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" FontSize="30"/>
     </Grid>
 </UserControl>
