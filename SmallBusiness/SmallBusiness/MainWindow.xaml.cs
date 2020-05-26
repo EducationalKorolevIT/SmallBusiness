@@ -219,5 +219,34 @@ namespace SmallBusiness
             ControlView.SelectedItem = item;
             add.itemToDelete = item;
         }
+
+        private void ViewAutors(object sender, RoutedEventArgs e)
+        {
+            ViewAutors add = new ViewAutors();
+            StackPanel element = new StackPanel();
+            element.Orientation = Orientation.Horizontal;
+
+            element.Children.Add(new TextBlock()
+            {
+                Text = "Авторы проекта "
+            });
+
+
+            Button btn = new Button();
+            btn.Click += deleteBtnClk;
+            btn.Content = "✕";
+            btn.Background = Brushes.Transparent;
+            btn.BorderThickness = new Thickness(0);
+
+
+            element.Children.Add(btn);
+            TabItem item = new TabItem()
+            {
+                Content = add,
+                Header = element
+            };
+            ControlView.Items.Add(item);
+            ControlView.SelectedItem = item;
+        }
     }
 }
