@@ -19,7 +19,7 @@ namespace SmallBusiness
             : base("name=smallbusinessEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -6,6 +6,21 @@
              xmlns:local="clr-namespace:SmallBusiness.Forms.SubForms"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#696969"/>
+            <Setter Property="Foreground" Value="#a1a1a1"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#696969"/>
+            <Setter Property="Foreground" Value="#a1a1a1"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#a1a1a1"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -21,8 +36,8 @@
         <Label HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.Row="0" Content="Текст задачи:" FontSize="30"/>
         <Label HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.Row="1" Content="Тема задачи:" FontSize="30"/>
         <Label HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Grid.Row="2" Content="Кому задача:" FontSize="30"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Margin="5" VerticalContentAlignment="Top" Background="LightPink" x:Name="TaskField" AcceptsReturn="True" TextWrapping="Wrap"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Margin="5" VerticalContentAlignment="Top" Background="LightPink" x:Name="TaskThemeField" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Margin="5" VerticalContentAlignment="Top" x:Name="TaskField" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="5" VerticalContentAlignment="Top" x:Name="TaskThemeField" AcceptsReturn="True" TextWrapping="Wrap"/>
         <ComboBox x:Name="UsersComboBox" Grid.Column="1" Grid.Row="2" Margin="5"/>
 
         <Button Content="Добавить задачу" Grid.Row="3" FontSize="30" Margin="10" Grid.ColumnSpan="2" Click="AddTask"/>
