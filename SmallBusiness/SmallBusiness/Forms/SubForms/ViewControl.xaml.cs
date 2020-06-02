@@ -32,6 +32,12 @@ namespace SmallBusiness.Forms.SubForms
 
         private void DeleteProd(object sender, RoutedEventArgs e)
         {
+            if (DatabaseGrid.SelectedItem as producttable == null)
+            {
+                MessageBox.Show("Выберите элемент для удаления", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             try
             {
                 producttable p = (producttable)(DatabaseGrid.SelectedItem);
@@ -39,7 +45,7 @@ namespace SmallBusiness.Forms.SubForms
                 MainWindow.Database.SaveChanges();
                 UpdateBtnClick(null, null);
             }
-            catch (Exception ex) { MessageBox.Show("Выберите элемент для удаления","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
+            catch (Exception ex) { MessageBox.Show("Возникла какая-то ошибка","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
         }
 
         private void EditProd(object sender, RoutedEventArgs e)

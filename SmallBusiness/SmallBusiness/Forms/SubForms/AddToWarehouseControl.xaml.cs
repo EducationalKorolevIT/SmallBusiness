@@ -37,6 +37,22 @@ namespace SmallBusiness.Forms.SubForms
 
         private void AddToWarehouse(object sender, RoutedEventArgs e)
         {
+            if (ProductsBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите продукт для добавления на склад", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            try
+            {
+                Convert.ToInt32(QuantityField.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(QuantityField.Text+" - не целое число", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             producttable prod = table.FirstOrDefault(f => f.Name == (string)ProductsBox.SelectedValue);
             int quantity = Convert.ToInt32(QuantityField.Text);
             warehouse whItem = new warehouse() { producttable = prod, Quantity = quantity };

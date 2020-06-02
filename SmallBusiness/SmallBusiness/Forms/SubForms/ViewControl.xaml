@@ -28,13 +28,13 @@
         </Grid.RowDefinitions>
         <DataGrid x:Name="DatabaseGrid" AutoGenerateColumns="False" Grid.Row="0" Background="#696969">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="цена" Width="*" Binding="{Binding Price}"/>
-                <DataGridTextColumn Header="производитель" Width="*" Binding="{Binding Manufacturer}"/>
+                <DataGridTextColumn Header="Имя" Width="Auto" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="артикул" Width="Auto" Binding="{Binding Article}"/>
+                <DataGridTextColumn Header="производитель" Width="Auto" Binding="{Binding Manufacturer}"/>
+                <DataGridTextColumn Header="цена" Width="Auto" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="сколько за цену" Width="Auto" Binding="{Binding UnitPerPrice}"/>
+                <DataGridTextColumn Header="единица измерения" Width="Auto" Binding="{Binding UnitType}"/>
                 <DataGridTextColumn Header="описание" Width="*" Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="артикул" Width="*" Binding="{Binding Article}"/>
-                <DataGridTextColumn Header="сколько за цену" Width="*" Binding="{Binding UnitPerPrice}"/>
-                <DataGridTextColumn Header="единица измерения" Width="*" Binding="{Binding UnitType}"/>
             </DataGrid.Columns>
         </DataGrid>
         

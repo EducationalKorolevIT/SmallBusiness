@@ -35,6 +35,11 @@ namespace SmallBusiness.Forms.SubForms
 
         private void AddTask(object sender, RoutedEventArgs e)
         {
+            if (UsersComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите пользователя, для которого эта задача", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             String taskText = TaskField.Text;
             String taskTheme = TaskThemeField.Text;
             String taskToUser = (string)UsersComboBox.SelectedValue;

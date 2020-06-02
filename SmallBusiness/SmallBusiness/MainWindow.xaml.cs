@@ -24,12 +24,13 @@ namespace SmallBusiness
         public static smallbusinessEntities Database = new smallbusinessEntities();
         public static MainWindow Main;
         public bool havePermission = false;
+        AuthorizationForm win;
         public MainWindow()
         {
             InitializeComponent();
             Main = this;
             Hide();
-            AuthorizationForm win = new AuthorizationForm();
+            win = new AuthorizationForm();
             win.Show();
         }
 

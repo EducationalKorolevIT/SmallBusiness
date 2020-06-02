@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SmallBusiness"
         mc:Ignorable="d"
-        Title="Window2" Height="450" Width="800" Background="#1a1a1a">
+        Title="Window2" Height="450" Width="800" Background="#1a1a1a" Closed="Window_Closed">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#696969"/>
@@ -48,7 +48,7 @@
             <Label Content="Логин" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontFamily="VesnaC" FontSize="16"/>
             <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,8.6,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="VesnaC" FontSize="16"/>
             <CheckBox Content="Запомнить меня" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="5" x:Name="SaveLP" Foreground="#a1a1a1"/>
-            <Button Content="Войти" Grid.ColumnSpan="2" Margin="5" Grid.Row="3" RenderTransformOrigin="-0.003,0.74" Click="Button_Click" FontFamily="Verbena-Normal" Cursor="Wait" FontSize="24"/>
+            <Button Content="Войти" Grid.ColumnSpan="2" Margin="5" Grid.Row="3" Click="Button_Click" FontFamily="Verbena-Normal" FontSize="24"/>
             <TextBox Grid.Column="1" Margin="8" Grid.Row="0" x:Name="LoginField"/>
             <PasswordBox Grid.Column="1" Margin="8" Grid.Row="1" x:Name="PasswordField"/>
         </Grid>

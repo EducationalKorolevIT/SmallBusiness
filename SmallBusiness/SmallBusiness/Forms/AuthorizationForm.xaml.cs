@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,6 +21,7 @@ namespace SmallBusiness
     /// </summary>
     public partial class AuthorizationForm : Window
     {
+        Timer tmr;
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -33,9 +35,10 @@ namespace SmallBusiness
                 PasswordField.Password = s2;
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        bool isClosedAuto = false;
+        private void Button_Click(object sender, EventArgs e)
         {
+            //tmr.Stop();
             int userId = -1;
             String userName = LoginField.Text;
             String userPass = PasswordField.Password;
@@ -51,13 +54,27 @@ namespace SmallBusiness
             {
                 MainWindow.Main.Show();
                 MainWindow.Main.havePermission = MainWindow.Database.users.FirstOrDefault(f => f.id == userId).userType==1;
-                MainWindow.Main.updatePermissions();
                 Settings.SaveAccount(userName, userPass, (bool)SaveLP.IsChecked);
-                Close();
+                MainWindow.Main.updatePermissions();
             }
             else
             {
                 MessageBox.Show("Неправильное имя или пароль");
+            }
+
+            if (userId != -1)
+            {
+                isClosedAuto = true;
+                Close();
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (!isClosedAuto)
+            {
+                MainWindow.Main.Close();
+                Close();
             }
         }
     }
